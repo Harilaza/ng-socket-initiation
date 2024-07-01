@@ -1,0 +1,30 @@
+<div class="flex flex-col h-screen justify-center items-center">
+  <div class="p-2 space-y-4 w-[50dvw]">
+    @for ( item of messageList; track item) {
+      @if (item.message_side === 'receiver') {
+        <div class="flex justify-start">
+          <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full ring-gray-600 ring-4">
+            <span class="font-medium text-gray-600">U-{{ item.user }}</span>
+          </div>
+          <div class="p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-50 w-96" role="alert">
+            {{ item.message }}
+          </div>
+        </div>
+      } @else {
+        <div class="flex justify-end">
+          <div class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 w-96" role="alert">
+            {{ item.message }}
+          </div>
+          <div class="relative inline-flex items-center justify-center w-10 h-10 overflow-hidden bg-gray-100 rounded-full ring-gray-600 ring-4">
+            <span class="font-medium text-gray-600"> U-{{ item.user }}</span>
+          </div>
+        </div>
+      }
+    }
+  </div>
+  <div class="mb-6 w-[50dvw] flex items-center gap-2">
+    <input [(ngModel)]="messageInput" type="text" id="large-input" class="block w-full p-4 text-gray-900 border border-gray-300 rounded-full bg-gray-50 text-base focus:ring-blue-200 focus:border-blue-200" >
+    <button (click)="sendMessage()" type="button" class="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2">Envoyer</button>
+  </div>
+</div>
+

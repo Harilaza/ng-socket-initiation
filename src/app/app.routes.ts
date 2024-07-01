@@ -1,3 +1,14 @@
 import { Routes } from '@angular/router';
+import {ChatComponent} from "./components/chat/chat.component";
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  {
+    path: "chat/:userId",
+    component: ChatComponent
+  },
+  {
+    path: "",
+    pathMatch: "full",
+    redirectTo: "/chat/1"
+  }
+];
